@@ -11,11 +11,11 @@ class Main {
       arr[i] = scanner.nextInt() + arr[i - 1];
     }
     
-    int s = scanner.nextInt(), e = scanner.nextInt();
-    while (s-- != 0 && e != 0) {
-      System.out.println(arr[e] - arr[s]);
-      s = scanner.nextInt();
-      e = scanner.nextInt();
+    int l = scanner.nextInt(), r = scanner.nextInt();
+    while (l-- != 0 && r != 0) {
+      System.out.println(arr[r] - arr[l]);
+      l = scanner.nextInt();
+      r = scanner.nextInt();
     }
   }
 }
