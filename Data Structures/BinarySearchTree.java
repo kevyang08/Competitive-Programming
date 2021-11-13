@@ -132,13 +132,4 @@ class BinarySearchTree {
     }
     return node.value;
   }
-  private Node getNode(int index, Node node) {
-    if (node == null) {
-      return null;
-    }
-    else if (node.value == index) {
-      return node;
-    }
-    return index > node.value ? getNode(index, node.right) : getNode(index, node.left);
-  }
 }
