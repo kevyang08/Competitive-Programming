@@ -11,10 +11,10 @@ class Main {
       arr[i] = scanner.nextInt();
     }
 
-    System.out.println(lSolve(arr));
+    System.out.println(solve(arr));
   }
 
-  public static int lSolve(int[] arr) {
+  public static int solve(int[] arr) {
     int m = arr[0], lm = 0;
     for (int i = 0; i < arr.length; i++) {
       lm = Math.max(arr[i], arr[i] + lm);
