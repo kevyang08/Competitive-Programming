@@ -7,15 +7,15 @@ class Main {
     Scanner scanner = new Scanner(System.in);
 
     int n = scanner.nextInt();
-    int[] arr = new int[n];
+    int[] arr = new int[n + 1];
     tree = new int[n + 1];
     char q = scanner.next().toUpperCase().charAt(0);
 
     while (q != 'E') {
       if (q == 'U') {
         int x = scanner.nextInt(), v = scanner.nextInt();
-        update(x, v - arr[x - 1]);
-        arr[x - 1] = v;
+        update(x, v - arr[x]);
+        arr[x] = v;
       }
       else if (q == 'S') {
         int l = scanner.nextInt(), r = scanner.nextInt();
