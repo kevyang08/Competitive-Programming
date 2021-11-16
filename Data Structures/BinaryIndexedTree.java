@@ -19,7 +19,7 @@ class Main {
       }
       else if (q == 'S') {
         int l = scanner.nextInt(), r = scanner.nextInt();
-        System.out.println(getSum(l, r));
+        System.out.println(getSum(r) - getSum(l - 1));
       }
       q = scanner.next().toUpperCase().charAt(0);
     }
@@ -31,9 +31,6 @@ class Main {
       tree[x] += v;
       x += x & -x;
     }
-  }
-  public static int getSum(int l, int r) {
-    return getSum(r) - getSum(l - 1);
   }
   public static int getSum(int x) {
     int sum = 0;
