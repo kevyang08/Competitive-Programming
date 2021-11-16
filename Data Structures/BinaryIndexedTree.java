@@ -27,9 +27,8 @@ class Main {
     System.out.println(Arrays.toString(tree));
   }
   public static void update(int x, int v) {
-    while (x < tree.length) {
-      tree[x] += v;
-      x += x & -x;
+    for (int i = x; i < tree.length; i += i & -i) {
+      tree[i] += v;
     }
   }
   public static int getSum(int x) {
