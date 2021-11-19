@@ -15,7 +15,7 @@ class Main {
   }
   public static int binarySearch(int[] arr, int x) {
     int l = 0, r = arr.length - 1;
-    while (l != r) {
+    while (l <= r) {
       int i = (l + r)/2, n = arr[i];
       if (n == x) {
         return i;
@@ -27,6 +27,6 @@ class Main {
         r = i - 1;
       }
     }
-    return arr[l] == x? l : -1;
+    return -1;
   }
 }
