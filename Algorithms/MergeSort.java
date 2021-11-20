@@ -15,7 +15,7 @@ class Main {
     System.out.println(Arrays.toString(arr));
   }
   public static void mergeSort(int[] arr) {
-    if (arr.length == 1) {
+    if (arr.length <= 1) {
       return;
     }
     int[] left = new int[arr.length/2], right = new int[arr.length - left.length];
