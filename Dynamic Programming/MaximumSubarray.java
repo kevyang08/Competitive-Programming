@@ -19,7 +19,7 @@ class Main {
     for (int i = 0; i < arr.length; i++) {
       lm = Math.max(arr[i], arr[i] + lm);
       if (lm > m) {
-          m = lm;
+        m = lm;
       }
     }
     return m;
