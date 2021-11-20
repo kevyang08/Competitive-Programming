@@ -19,12 +19,8 @@ class Main {
       return;
     }
     int[] left = new int[arr.length/2], right = new int[arr.length - left.length];
-    for (int i = 0; i < left.length; i++) {
-      left[i] = arr[i];
-    }
-    for (int i = left.length; i < arr.length; i++) {
-      right[i - left.length] = arr[i];
-    }
+    System.arraycopy(arr, 0, left, 0, left.length);
+    System.arraycopy(arr, left.length, right, 0, right.length);
     mergeSort(left);
     mergeSort(right);
     merge(arr, left, right);
