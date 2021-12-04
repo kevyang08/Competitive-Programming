@@ -16,7 +16,13 @@ class Main {
     }
 
     for (int i = 0; i < n; i++) {
-      System.out.println(Arrays.toString(adj[i]));
+      System.out.print(i + " ->");
+      for (int j = 0; j < n; j++) {
+        if (adj[i][j] > 0) {
+          System.out.print(" " + j);
+        }
+      }
+      System.out.println();
     }
   }
 }
