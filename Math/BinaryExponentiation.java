@@ -11,7 +11,7 @@ class Main {
   public static long pow(long n, int p) {
     long res = 1;
     while (p > 0) {
-      if (p%2 == 1) {
+      if ((p & 1) == 1) {
         res *= n;
       }
       n *= n;
