@@ -31,7 +31,6 @@ class Main {
     PriorityQueue<Pair> q = new PriorityQueue<Pair>(n,(a,b) -> a.value - b.value);
     q.offer(new Pair(from, 0));
     while (!q.isEmpty()) {
-      System.out.println(q.peek().key);
       int curr = q.poll().key;
       for (Edge v : adj[curr]) {
         if (dist[v.to] > dist[curr] + v.dist) {
