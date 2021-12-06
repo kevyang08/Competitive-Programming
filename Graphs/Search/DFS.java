@@ -9,7 +9,6 @@ class Main {
 
     n = scanner.nextInt();
     m = scanner.nextInt();
-    m = Math.min(m, n * (n - 1)/2);
     adj = new ArrayList[n + 1];
     vis = new boolean[n + 1];
 
