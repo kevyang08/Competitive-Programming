@@ -30,6 +30,7 @@ class Main {
     dist[from] = 0;
     PriorityQueue<Pair> q = new PriorityQueue<Pair>(n,(a,b) -> a.value - b.value);
     q.offer(new Pair(from, 0));
+    
     while (!q.isEmpty()) {
       int curr = q.poll().key;
       for (Edge v : adj[curr]) {
@@ -40,6 +41,7 @@ class Main {
         }
       }
     }
+    
     Stack<Integer> res = new Stack<Integer>();
     int i = to;
     while (i != 0) {
