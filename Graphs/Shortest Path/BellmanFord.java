@@ -24,7 +24,7 @@ class Main {
     Arrays.fill(dist, 0x3f3f3f3f);
     dist[from] = 0;
     
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i < n; i++) {
       for (Edge e : edges) {
         if (dist[e.to] > dist[e.from] + e.dist) {
           dist[e.to] = dist[e.from] + e.dist;
