@@ -28,7 +28,7 @@ class Main {
     int[] dist = new int[n + 1], parent = new int[n + 1];
     Arrays.fill(dist, Integer.MAX_VALUE);
     dist[from] = 0;
-    PriorityQueue<Pair> q = new PriorityQueue<Pair>(n,(a,b) -> a.value - b.value);
+    PriorityQueue<Pair> q = new PriorityQueue<Pair>(n, (a, b) -> a.value - b.value);
     q.offer(new Pair(from, 0));
     
     while (!q.isEmpty()) {
