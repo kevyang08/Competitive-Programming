@@ -26,6 +26,7 @@ class Main {
   }
   public static int getDist(int from, int to) {
     int[] dist = new int[n + 1], parent = new int[n + 1];
+    boolean[] inq = new boolean[n + 1];
     Arrays.fill(dist, Integer.MAX_VALUE);
     dist[from] = 0;
     PriorityQueue<Pair> q = new PriorityQueue<Pair>(n, (a, b) -> a.value - b.value);
@@ -33,15 +34,19 @@ class Main {
     
     while (!q.isEmpty()) {
       int curr = q.poll().key;
+      inq[curr] = false;
       for (Edge v : adj[curr]) {
         if (dist[v.to] > dist[curr] + v.dist) {
           dist[v.to] = dist[curr] + v.dist;
-          q.offer(new Pair(v.to, dist[v.to]));
+          if (!inq[v.to]) {
+            q.offer(new Pair(v.to, dist[v.to]));
+            inq[v.to] = true;
+          }
           parent[v.to] = curr;
         }
       }
     }
-    
+
     Stack<Integer> res = new Stack<Integer>();
     int i = to;
     while (i != 0) {
