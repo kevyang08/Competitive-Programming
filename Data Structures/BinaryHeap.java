@@ -34,31 +34,36 @@ class Main {
     }
   }
   public static void swap(int i, int j) {
-    int temp = heap[i];
-    heap[i] = heap[j];
-    heap[j] = temp;
-    if (j/2 > 0 && heap[j] < heap[j/2]) swap(j, j/2);
+    int temp = heap[j];
+    heap[j] = heap[i];
+    heap[i] = temp;
   }
-  public static void remove(int i) {
+  public static void heapUp(int i) {
+    if (i/2 > 0 && heap[i] < heap[i/2]) {
+      swap(i, i/2);
+      heapUp(i/2);
+    }
+  }
+  public static void heapDown(int i) {
     if (i * 2 <= n) {
       if (i * 2 + 1 <= n && heap[i * 2 + 1] < heap[i * 2]) {
-        heap[i] = heap[i * 2 + 1];
-        remove(i * 2 + 1);
+        swap(i, i * 2 + 1);
+        heapDown(i * 2 + 1);
       }
       else {
-        heap[i] = heap[i * 2];
-        remove(i * 2);
+        swap(i, i * 2);
+        heapDown(i * 2);
       }
     }
   }
   public static void add(int x) {
     heap[++n] = x;
-    if (n/2 > 0 && heap[n] < heap[n/2]) swap(n, n/2);
+    heapUp(n);
   }
   public static int poll() {
     int x = heap[1];
-    remove(1);
-    n--;
+    heap[1] = heap[n--];
+    heapDown(1);
     return x;
   }
 }
