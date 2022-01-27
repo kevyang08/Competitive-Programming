@@ -15,31 +15,21 @@ class Main {
     System.out.println(Arrays.toString(arr));
   }
   public static void mergeSort(int[] arr) {
-    if (arr.length <= 1) {
-      return;
-    }
-    int[] left = new int[arr.length/2], right = new int[arr.length - left.length];
-    System.arraycopy(arr, 0, left, 0, left.length);
-    System.arraycopy(arr, left.length, right, 0, right.length);
-    mergeSort(left);
-    mergeSort(right);
-    merge(arr, left, right);
+    int[] temp = new int[arr.length];
+    mergeSort(arr, temp, 0, arr.length);
   }
-  public static void merge(int[] arr, int[] left, int[] right) {
-    int i = 0, j = 0, k = 0;
-    while (i < left.length && j < right.length) {
-      if (left[i] < right[j]) {
-        arr[k++] = left[i++];
-      }
-      else {
-        arr[k++] = right[j++];
-      }
-    }
-    while (i < left.length) {
-      arr[k++] = left[i++];
-    }
-    while (j < right.length) {
-      arr[k++] = right[j++];
+  public static void mergeSort(int[] arr, int[] temp, int l, int r) {
+    if (r - l <= 1) return;
+    int mid = (l + r) >> 1;
+    mergeSort(arr, temp, l, mid);
+    mergeSort(arr, temp, mid, r);
+    merge(arr, temp, l, r, mid);
+  }
+  public static void merge(int[] arr, int[] temp, int l, int r, int mid) {
+    for (int i = l; i < r; i++) temp[i] = arr[i];
+    for (int i = l, j = mid, k = l; k < r; k++) {
+      if (j >= r || i < mid && temp[i] < temp[j]) arr[k] = temp[i++];
+      else arr[k] = temp[j++];
     }
   }
 }
