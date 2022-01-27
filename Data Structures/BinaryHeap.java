@@ -13,10 +13,7 @@ class Main {
         int x = scanner.nextInt();
         add(x);
       }
-      else if (op == 's') {
-        System.out.println(n);
-      }
-      else if (op == 'p') {
+      else {// if (op == 'p') {
         System.out.println(poll());
       }
     }
@@ -65,5 +62,11 @@ class Main {
     heap[1] = heap[n--];
     heapDown(1);
     return x;
+  }
+  public static int size() {
+    return n;
+  }
+  public static boolean isEmpty() {
+    return n == 0;
   }
 }
