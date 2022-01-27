@@ -46,11 +46,11 @@ class Main {
   }
   public static void heapDown(int i) {
     if (i * 2 <= n) {
-      if (i * 2 + 1 <= n && heap[i * 2 + 1] < heap[i * 2]) {
+      if (i * 2 + 1 <= n && heap[i * 2 + 1] < heap[i * 2] && heap[i * 2 + 1] < heap[i]) {
         swap(i, i * 2 + 1);
         heapDown(i * 2 + 1);
       }
-      else {
+      else if (heap[i * 2] < heap[i]) {
         swap(i, i * 2);
         heapDown(i * 2);
       }
