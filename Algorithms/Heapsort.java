@@ -16,26 +16,30 @@ class Main {
   }
   public static void heapsort(int[] arr) {
     for (int i = 0; i < arr.length; i++) {
-      int j = i;
-      while ((j + 1)/2 - 1 >= 0 && arr[j] > arr[(j + 1)/2 - 1]) {
-        swap(arr, j, (j + 1)/2 - 1);
-        j = (j + 1)/2 - 1;
-      }
+      heapUp(arr, i);
     }
     for (int i = arr.length - 1; i > 0; i--) {
-      int j = 0;
-      swap(arr, i, j);
-      while (j * 2 + 1 < i) {
-        if (j * 2 + 2 < i && arr[j * 2 + 2] > arr[j * 2 + 1] && arr[j * 2 + 2] > arr[j]) {
-          swap(arr, j, j * 2 + 2);
-          j = j * 2 + 2;
-        }
-        else if (arr[j * 2 + 1] > arr[j]) {
-          swap(arr, j, j * 2 + 1);
-          j = j * 2 + 1;
-        }
-        else break;
+      swap(arr, i, 0);
+      heapDown(arr, i, 0);
+    }
+  }
+  public static void heapUp(int[] arr, int i) {
+    while ((i + 1)/2 - 1 >= 0 && arr[i] > arr[(i + 1)/2 - 1]) {
+      swap(arr, i, (i + 1)/2 - 1);
+      i = (i + 1)/2 - 1;
+    }
+  }
+  public static void heapDown(int[] arr, int i, int j) {
+    while (j * 2 + 1 < i) {
+      if (j * 2 + 2 < i && arr[j * 2 + 2] > arr[j * 2 + 1] && arr[j * 2 + 2] > arr[j]) {
+        swap(arr, j, j * 2 + 2);
+        j = j * 2 + 2;
       }
+      else if (arr[j * 2 + 1] > arr[j]) {
+        swap(arr, j, j * 2 + 1);
+        j = j * 2 + 1;
+      }
+      else break;
     }
   }
   public static void swap(int[] arr, int i, int j) {
