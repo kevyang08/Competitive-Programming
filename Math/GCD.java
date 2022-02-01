@@ -10,4 +10,7 @@ class Main {
   public static long gcd(long a, long b) {
     return a%b == 0 ? b : gcd(b, a%b);
   }
+  public static long lcm(long a, long b) {
+    return a * b/gcd(a, b); 
+  }
 }
