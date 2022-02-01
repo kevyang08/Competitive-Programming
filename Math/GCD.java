@@ -8,9 +8,6 @@ class Main {
     System.out.println(gcd(a, b));
   }
   public static long gcd(long a, long b) {
-    if (a%b != 0) {
-      return gcd(b, a%b);
-    }
-    return b;
+    return a%b == 0 ? b : gcd(b, a%b);
   }
 }
