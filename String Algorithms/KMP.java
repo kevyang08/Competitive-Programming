@@ -15,7 +15,7 @@ class Main {
     for (int i = 0; i < s.length(); i++) {
       // while the current character in the string doesn't match the current character in the pattern, the current character in the pattern becomes the next letter of the common prefix, or the first character if there is no common prefix
       while (j > 0 && s.charAt(i) != t.charAt(j)) j = lcp[j - 1];
-      if (s.charAt(i) == t.charAt(j)) j++; // increment the length of current matching string
+      if (s.charAt(i) == t.charAt(j)) j++; // increment the length of the longest prefix of t that is also a suffix of substring s[i - j, i]
       if (j == t.length()) return i - j + 1; // pattern is found, returns zero-based index of occurence in search string
     }
     return -1; // -1 if not found
@@ -26,7 +26,7 @@ class Main {
     for (int i = 1; i < s.length(); i++) {
       // while the current character in the pattern doesn't match the current character in the prefix, the current character in the prefix becomes the next letter of the common prefix, or the first character if there is no common prefix
       while (j > 0 && s.charAt(i) != s.charAt(j)) j = lcp[j - 1];
-      if (s.charAt(i) == s.charAt(j)) lcp[i] = ++j; // increment the length of current longest common prefix and assigns it to current index
+      if (s.charAt(i) == s.charAt(j)) lcp[i] = ++j; // increment the length of longest prefix that is also a suffix of substring s[0, i] and assigns it to current index
     }
   }
 }
