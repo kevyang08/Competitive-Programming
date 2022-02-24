@@ -49,7 +49,7 @@ class Main {
       }
       lazy[idx] = 0;
     }
-    if (l > r || ql > r || qr < l) {
+    if (ql > r || qr < l) {
       return;
     }
     if (l >= ql && r <= qr) {
@@ -77,7 +77,7 @@ class Main {
     if (l >= ql && r <= qr) {
       return st[idx];
     }
-    if (l > r || ql > r || qr < l) {
+    if (ql > r || qr < l) {
       return 0;
     }
     int m = (l + r)/2;
