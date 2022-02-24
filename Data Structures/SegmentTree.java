@@ -33,6 +33,7 @@ class Main {
 
     System.out.println(Arrays.toString(tree));
   }
+  // probably never going to use this again until i actually understand what it does and figure out how to update lazily
   public static void update(int x, int v) {
     x += n - 1;
     tree[x] = v;
