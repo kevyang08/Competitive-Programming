@@ -28,6 +28,5 @@ public class Main {
       if (j >= r || i < mid && temp[i] < temp[j]) arr[k] = temp[i++];
       else arr[k] = temp[j++];
     }
-    System.out.println(Arrays.toString(arr));
   }
 }
