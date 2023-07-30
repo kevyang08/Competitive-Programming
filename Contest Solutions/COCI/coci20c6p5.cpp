@@ -64,18 +64,3 @@ int main() {
     }
     return 0;
 }
-
-/*
-https://dmoj.ca/problem/coci20c6p5
-
-- fenwick tree:
-    - store a vector<pair<int, int>> at each node
-    - initialize each node with pair {0, 0}
-    - whenever a node is updated, push a new pair containing the index that updated it
-      and the new value of the node (which adds the previous value)
-    - when queried, binary search through the vector, or continue if highest index is 
-      less than left index or if r = 0
-
-time complexity: O(nlog^2n) per query
-space complexity: O(nlogn) hopefully
-*/
