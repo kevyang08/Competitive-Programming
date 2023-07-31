@@ -22,7 +22,7 @@ struct Node {
 };
 int n, q, x, y, c = 0, arr[100001];
 char op;
-Node *root[500001], *res;
+Node *root[500001];
 void pushUp(Node* node) {
     node -> sum = node -> l -> sum + node -> r -> sum;
     node -> pr = max(node -> l -> pr, node -> l -> sum + node -> r -> pr);
@@ -84,26 +84,20 @@ int main() {
     cin >> q;
     while (q--) {
         cin >> op;
-        switch (op) {
-            case 'U':
-                cin >> x >> y;
-                root[++c] = new Node();
-                upgrade(root[c - 1], root[c], 1, n, x, y);
-                break;
-            case 'G':
-                cin >> x;
-                root[++c] = root[x];
-                break;
-            case 'P':
-                cin >> x >> y;
-                cout << (res = query(root[c], 1, n, x, y)) -> pr << "\n";
-                delete res;
-                break;
-            case 'S':
-                cin >> x >> y;
-                cout << (res = query(root[c], 1, n, x, y)) -> su << "\n";
-                delete res;
-                break;
+        if (op == 'U') {
+            cin >> x >> y;
+            root[++c] = new Node();
+            upgrade(root[c - 1], root[c], 1, n, x, y);
+        }
+        else if (op == 'G') {
+            cin >> x;
+            root[++c] = root[x];
+        }
+        else {
+            cin >> x >> y;
+            auto res = query(root[c], 1, n, x, y);
+            cout << (op == 'P' ? res -> pr : res -> su) << "\n";
+            delete res;
         }
     }
     return 0;
