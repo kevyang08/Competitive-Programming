@@ -55,11 +55,10 @@ int main() {
         bool thing = true;
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
+                if (grid[i][j] != '^') continue;
                 int cnt = 0;
-                if (grid[i][j] == '^') {
-                    for (int k = 0; k < 4; k++) if (i + dr[k] >= 0 && i + dr[k] < r && j + dc[k] >= 0 && j + dc[k] < c && grid[i + dr[k]][j + dc[k]] == '^') cnt++;
-                    if (cnt < 2) thing = false;
-                }
+                for (int k = 0; k < 4; k++) if (i + dr[k] >= 0 && i + dr[k] < r && j + dc[k] >= 0 && j + dc[k] < c && grid[i + dr[k]][j + dc[k]] == '^') cnt++;
+                if (cnt < 2) thing = false;
             }
         }
         if (thing) {
