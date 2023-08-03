@@ -27,7 +27,7 @@ int main() {
         while (!q.empty()) {
             auto p = q.front(); q.pop();
             for (int k = 0; k < 4; k++) {
-                if (p.first + dr[k] >= 0 && p.first + dr[k] < r && p.second + dc[k] >= 0 && p.second + dc[k] < c && grid[p.first + dr[k]][p.second + dc[k]] == '.') {
+                if (p.first + dr[k] >= 0 && p.first + dr[k] < r && p.second + dc[k] >= 0 && p.second + dc[k] < c && grid[p.first + dr[k]][p.second + dc[k]] == '.' && (p.first + dr[k] != prvr[p.first][p.second] || p.second + dc[k] != prvc[p.first][p.second])) {
                     if (vis[p.first + dr[k]][p.second + dc[k]]) {
                         int i = p.first + dr[k], j = p.second + dc[k];
                         while (grid[i][j] == '.') {
