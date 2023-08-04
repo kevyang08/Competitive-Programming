@@ -21,8 +21,7 @@ void dfs(int i, int j, char ch, int d) {
     vis[ch - 'A'][i][j] = true;
     int t = d;
     while (i + dr[t] < 0 || i + dr[t] >= r || j + dc[t] < 0 || j + dc[t] >= c || grid[i + dr[t]][j + dc[t]] == '.' || t == (d + 2)%4) t = (t + 1)%4;
-    d = t;
-    dfs(i + dr[d], j + dc[d], ch, d);
+    dfs(i + dr[t], j + dc[t], ch, t);
 }
 void bfs(int i, int j, char ch) {
     vis[ch - 'A'][i][j] = true;
