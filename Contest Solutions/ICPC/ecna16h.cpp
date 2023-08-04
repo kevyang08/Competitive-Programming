@@ -5,7 +5,7 @@ int r, c, a[3], dr[] = {1, 0, -1, 0}, dc[] = {0, 1, 0, -1}, ra = 100, ca = 100, 
 char grid[100][100];
 bool vis[2][100][100];
 void dfs(int i, int j, char ch, int d) {
-    if (grid[i][j] == ch && vis[ch - 'A'][i][j]) return;
+    if (vis[ch - 'A'][i][j]) return;
     if (ch == 'A') {
         if (i < ra || i == ra && j < ca) {
             ra = i;
