@@ -5,11 +5,9 @@ int t, a, b, id[30001], pos[30001], sz[30001];
 char op;
 int find(int x) {
     if (id[x] < 0) return x;
-    else {
-        int temp = find(id[x]);
-        if (temp != id[x]) pos[x] += pos[id[x]] - 1;
-        return (id[x] = temp);
-    }
+    int temp = find(id[x]);
+    if (temp != id[x]) pos[x] += pos[id[x]] - 1;
+    return (id[x] = temp);
 }
 void join(int i, int j) {
     i = find(i); j = find(j);
