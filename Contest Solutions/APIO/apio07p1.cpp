@@ -4,7 +4,7 @@ using namespace std;
 int n, a, b, lo[100001], hi[100001], c[100001], sz[100001];
 vector<int> adj[100001];
 int dfs(int i) {
-    int ans = 0, hc[] = {0, 0}, s[] = {0, 0};
+    int ans = 0, hc[2] = {0, 0}, s[2] = {0, 0};
     for (int j = 0; j < 2; j++) {
         if (adj[i][j] == -1) {
             hi[i] = 0;
