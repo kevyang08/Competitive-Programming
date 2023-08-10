@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, a, b, lo[100001], hi[100001], c[100001], sz[100001];
-vector<int> adj[100001];
+int n, a, b, lo[100001], hi[100001], c[100001], sz[100001], adj[100001][2];
 int dfs(int i) {
     int ans = 0, hc[2] = {0, 0}, s[2] = {0, 0};
     for (int j = 0; j < 2; j++) {
@@ -39,8 +38,8 @@ int main() {
     cin >> n;
     for (int i = 1; i <= n; i++) {
         cin >> a >> b;
-        adj[i].push_back(a);
-        adj[i].push_back(b);
+        adj[i][0] = a;
+        adj[i][1] = b;
     }
     cout << dfs(1) << "\n";
     return 0;
