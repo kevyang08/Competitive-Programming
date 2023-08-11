@@ -13,7 +13,7 @@
  * 
  * time complexity: O(NlogN)
 */
-/* note: there is a much easier solution using binary search */
+/* note: there is a much easier solution using binary search or even the builtin set data structure */
 
 #include <bits/stdc++.h>
 using namespace std;
