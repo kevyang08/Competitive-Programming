@@ -4,7 +4,7 @@ using namespace std;
 #define fi first
 #define se second
  
-int t, n, q, l[200000], r, a, b[200000], x[200000], ans[600000];
+int t, n, q, l, r, a, b, x[200000], ans[600000];
 bool comp(pair<int, int> a, pair<int, int> b) {
     return a.se < b.se || a.se == b.se && a.fi > b.fi;
 }
@@ -20,10 +20,10 @@ int main() {
         deque<pair<int, int>> dq;
         vector<pair<int, int>> v;
         for (int i = 0; i < n; i++) {
-            cin >> l[i] >> r >> a >> b[i];
-            cds.push_back(l[i]);
-            cds.push_back(b[i]);
-            v.push_back({l[i], b[i]});
+            cin >> l >> r >> a >> b;
+            cds.push_back(l);
+            cds.push_back(b);
+            v.push_back({l, b});
         }
         cin >> q;
         for (int i = 0; i < q; i++) {
