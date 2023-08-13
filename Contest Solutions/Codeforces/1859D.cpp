@@ -1,3 +1,5 @@
+/* note: no need for coordinate compression, using a map to store the answers would work
+   and is also a lot easier*/
 #include <bits/stdc++.h>
 using namespace std;
  
