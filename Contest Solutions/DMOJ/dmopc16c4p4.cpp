@@ -3,7 +3,7 @@ using namespace std;
 
 const int sz = 512;
 
-int n, q, l, r, a[100500], cnt[100500], ans[100500], cur = 0;
+int n, q, l, r, a[100001], cnt[100001], ans[100001], cur = 0;
 vector<pair<pair<int, int>, int>> v;
 bool cmp(pair<pair<int, int>, int> a, pair<pair<int, int>, int> b) {
     int lf = a.first.first/sz, ls = b.first.first/sz;
