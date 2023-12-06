@@ -1,4 +1,5 @@
 // literally just quicksort
+// randomize everything to be safe
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -50,6 +51,7 @@ int main() {
         v[0].push_back(i + 1);
         if (i < 2) continue;
         swap(c[i], c[gen()%i]);
+        swap(v[0][i], v[0][gen()%i]);
     }
     for (int i = 0; i < n; i++) qs(0, c[i]);
     return 0;
