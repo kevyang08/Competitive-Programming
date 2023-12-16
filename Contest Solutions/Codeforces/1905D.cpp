@@ -1,12 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int t, n, a[1000001];
+ 
+int t, n, a[1000001], ans[1000001];
 int main() {
     cin.tie(0);
     cin.sync_with_stdio(0);
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
+    ans[0] = -1;
     cin >> t;
     while (t--) {
         long long res = 0, cur = 0;
@@ -17,9 +18,10 @@ int main() {
         for (int i = 1; i <= n; i++) {
             cin >> a[i];
             s.erase(a[i]);
-            if (dq.empty() || dq.back().second != *s.lower_bound(0)) dq.push_back({1, *s.lower_bound(0)});
+            ans[i] = *s.lower_bound(0);
+            if (ans[i] != ans[i - 1]) dq.push_back({1, ans[i]});
             else dq.back().first++;
-            res += dq.back().second;
+            res += ans[i];
         }
         cur = res;
         for (int i = 1; i < n; i++) {
