@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
+
 int t, n, a[1000001], ans[1000001];
 int main() {
     cin.tie(0);
@@ -23,9 +23,10 @@ int main() {
             else dq.back().first++;
             res += ans[i];
         }
-        cur = res;
+        cur = res - n;
+        dq.pop_back();
         for (int i = 1; i < n; i++) {
-            int freq = 0;
+            int freq = 1;
             cur -= dq.front().second;
             dq.front().first--;
             if (!dq.front().first) dq.pop_front();
@@ -36,10 +37,8 @@ int main() {
                 dq.pop_back();
             }
             cur += (long long)freq * a[i];
-            if (freq) dq.push_back({freq, a[i]});
-            cur += n;
-            dq.push_back({1, n});
-            res = max(cur, res);
+            dq.push_back({freq, a[i]});
+            res = max(cur + n, res);
         }
         cout << res << "\n";
     }
