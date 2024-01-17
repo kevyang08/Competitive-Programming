@@ -25,10 +25,7 @@ int main() {
                 p.push_back({p[idx].first * p[idx].second + v[idx].size(), x + 1});
                 ++idx;
             }
-            if (ceil(1e18/p[idx].first) < p[idx].second) {
-                p[idx].second = (long long)ceil(1e18/p[idx].first);
-                v[idx].clear();
-            }
+            if (ceil(1e18/p[idx].first) < p[idx].second) p[idx].second = (long long)ceil(1e18/p[idx].first);
         }
         for (int i = 0; i < q; i++) {
             cin >> k;
