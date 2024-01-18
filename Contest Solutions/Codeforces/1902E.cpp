@@ -2,27 +2,28 @@
 using namespace std;
 
 struct TrieNode {
-    unordered_map<char, TrieNode*> child;
+    TrieNode *child[26];
     int cnt = 0;
-    TrieNode() {}
+    TrieNode() {
+        for (auto &c : child) c = nullptr;
+    }
 } root;
 int n;
 string s[1000000];
 long long ans = 0, res = 0;
 void insert(string& s) {
-    auto curr = &root;
+    TrieNode *curr = &root;
     for (char c : s) {
-        if (curr -> child.find(c) == curr -> child.end()) curr -> child.insert({c, new TrieNode()});
-        curr = curr -> child[c];
+        if (curr -> child[c - 'a'] == nullptr) curr -> child[c - 'a'] = new TrieNode();
+        curr = curr -> child[c - 'a'];
         curr -> cnt++;
     }
 }
 void calc(string& s) {
-    if (root.child.find(s[0]) == root.child.end()) return;
-    TrieNode *curr = root.child[s[0]];
+    TrieNode *curr = root.child[s[0] - 'a'];
     for (int i = 0; i < s.length() && curr != nullptr; i++) {
         int thing = curr -> cnt;
-        curr = (i + 1 < s.length() ? curr -> child[s[i + 1]] : nullptr);
+        curr = (i + 1 < s.length() ? curr -> child[s[i + 1] - 'a'] : nullptr);
         if (curr != nullptr) thing -= curr -> cnt;
         res += 2LL * thing * (i + 1);
     }
@@ -45,7 +46,7 @@ int main() {
     cout << ans - res << "\n";
     return 0;
 }
-
+ 
 /*
 tips:
 - look out for int overflow and array out of bounds
