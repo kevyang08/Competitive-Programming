@@ -15,7 +15,6 @@ long long solve() {
             bb += xx;
             if (!(b & x)) bbb += xx;
         }
-        // cout << aa << " " << bb << " wtf\n";
     }
     return abs(aa - bb);
 }
