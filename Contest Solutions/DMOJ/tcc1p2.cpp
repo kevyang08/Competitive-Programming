@@ -14,7 +14,7 @@ int main() {
         a[i] += a[i - 1];
     }
     for (int i = 1; i <= k; i++) cin >> x[i];
-    for (int i = 1; i <= n; i++) sum[i] = a[n];
+    for (int i = 1; i <= k; i++) sum[i] = a[n];
     for (int i = n; i > 0; i--) {
         int temp = a[i] - a[i - 1];
         if (!idx[temp]) {
