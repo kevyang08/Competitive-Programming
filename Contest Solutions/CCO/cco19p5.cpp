@@ -1,3 +1,5 @@
+// small-to-large merging
+
 #include <bits/stdc++.h>
 using namespace std;
 
