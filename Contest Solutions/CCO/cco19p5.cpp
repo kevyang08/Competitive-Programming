@@ -18,7 +18,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         for (int j : adj[i]) st[i].insert(j);
         ans += st[i].size();
-        int temp = *st[i].lower_bound(i);
+        int temp = *st[i].begin();
         st[i].erase(temp);
         if (st[temp].size() < st[i].size()) swap(st[temp], st[i]);
         for (int j : st[i]) st[temp].insert(j);
