@@ -4,12 +4,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
-
 int ans = 0x3f3f3f3f, offc[200000];
-ll off[200000];
+int off[200000];
 vector<pair<int, int>> adj[200000];
-map<ll, int> mp[200000];
+map<int, int> mp[200000];
 void dfs(int i, int p, int k) {
     for (auto j : adj[i]) {
         if (j.first == p) continue;
@@ -22,6 +20,7 @@ void dfs(int i, int p, int k) {
             swap(offc[i], offc[j.first]);
         }
         for (auto e : mp[j.first]) {
+            if (e.first + off[j.first] > k) continue;
             if (mp[i].find(k - e.first - off[j.first] - off[i]) != mp[i].end()) {
                 ans = min(ans, e.second + mp[i][k - e.first - off[j.first] - off[i]] + offc[i] + offc[j.first]);
             }
@@ -29,6 +28,7 @@ void dfs(int i, int p, int k) {
         off[j.first] -= off[i];
         offc[j.first] -= offc[i];
         for (auto e : mp[j.first]) {
+            if (e.first + off[j.first] + off[i] > k) continue;
             if (mp[i].find(e.first + off[j.first]) == mp[i].end() || mp[i][e.first + off[j.first]] > e.second + offc[j.first]) {
                 mp[i][e.first + off[j.first]] = e.second + offc[j.first];
             }
