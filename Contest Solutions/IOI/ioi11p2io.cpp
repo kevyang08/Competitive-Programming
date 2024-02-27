@@ -1,3 +1,6 @@
+// small-to-large merging with more fun stuff
+// unordered_map is somehow slower, even though theoretically should be faster than map
+
 #include <bits/stdc++.h>
 using namespace std;
 
