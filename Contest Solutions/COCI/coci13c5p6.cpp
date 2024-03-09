@@ -12,7 +12,6 @@ void thing(int u, int v) {
         id[v] = u;
         out[u] = out[v];
     }
-    out[v] = 0;
 }
 bool join(int a, int b) {
     if (!used[a]) {
