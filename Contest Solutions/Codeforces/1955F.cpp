@@ -10,7 +10,6 @@ int main() {
     cin >> t;
     while (t--) {
         cin >> a >> b >> c >> d;
-        d -= d%2;
         if ((a + c)%2 && (b + c)%2) {
             if (c) c--;
             else {
