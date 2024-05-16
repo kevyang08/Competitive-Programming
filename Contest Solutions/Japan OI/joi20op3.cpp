@@ -9,8 +9,7 @@ void dfs1(int i, int p) {
         if (j == p) continue;
         dfs1(j, i);
         // if child has power generator, we can always take at least one
-        if (s[j - 1] == '1' && dp[j] == 0) dp[i]++;
-        else if (s[j - 1] == '1' && dp[j]) dp[i] += max(dp[j] - 1, 1);
+        if (s[j - 1] == '1') dp[i] += max(dp[j] - 1, 1);
         else dp[i] += dp[j];
     }
 }
