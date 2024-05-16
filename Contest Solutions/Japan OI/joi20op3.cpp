@@ -18,8 +18,7 @@ void dfs2(int i, int p, int v) {
     for (int j : adj[i]) {
         if (j == p) continue;
         // honestly i forgot what this does but probably smth about propagating down the tree
-        if (s[i - 1] == '1' && (dp[i] <= 1 || dp[i] == dp[j] - 1)) dfs2(j, i, 1);
-        else if (s[i - 1] == '1' && dp[i] > 1 && dp[i] != dp[j] - 1) dfs2(j, i, max(1, dp[i] - dp[j] - 1));
+        if (s[i - 1] == '1') dfs2(j, i, max(1, dp[i] - dp[j] - 1));
         else dfs2(j, i, dp[i] - dp[j]);
     }
     // weird case where if dp[i] == 1 and s[i - 1] == 1, dp[i] remains 1
