@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// third submission made even simpler
+// would've ac'd if not for that weird case
+
 int n, a, b, dp[200001], ans = 0;
 string s;
 vector<int> adj[200001];
@@ -17,7 +20,8 @@ void dfs2(int i, int p, int v) {
     dp[i] += v;
     for (int j : adj[i]) {
         if (j == p) continue;
-        // honestly i forgot what this does but probably smth about propagating down the tree
+        // the dp[i] - 1 part is basically the same as in dfs1
+        // idk about dp[j] and why we dont have to consider s[j - 1] tho
         if (s[i - 1] == '1') dfs2(j, i, max(1, dp[i] - dp[j] - 1));
         else dfs2(j, i, dp[i] - dp[j]);
     }
