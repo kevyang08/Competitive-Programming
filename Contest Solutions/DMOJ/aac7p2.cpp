@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// time: ~45 mins
+// was a bit stupid, should've read more carefully
+
 /*
 https://dmoj.ca/problem/aac7p2
 
