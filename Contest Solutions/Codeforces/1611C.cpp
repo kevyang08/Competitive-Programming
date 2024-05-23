@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// way too overcomplicated, check editorial
+
 int t, n, a[200001], p[200001];
 bool check(int x) {
     deque<int> dq;
