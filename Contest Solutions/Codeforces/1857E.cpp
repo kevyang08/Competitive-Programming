@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// probably just make arrays for l and r instead if doing contest
-
 int t, n, idx[200001];
 long long x[200001], ans[200001];
 int main() {
