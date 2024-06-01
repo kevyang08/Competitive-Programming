@@ -5,7 +5,7 @@ int n, s, u, v, dp[5001];
 vector<int> adj[5001];
 int dfs(int i, int p, int m) {
     dp[i] = 0;
-    int res = m + 1, mn = 0x3f3f3f3f;
+    int res = (adj[i].size() > 1 ? 0 : m + 1), mn = 0x3f3f3f3f;
     for (int j : adj[i]) {
         if (j == p) continue;
         int temp = dfs(j, i, m) + 1;
