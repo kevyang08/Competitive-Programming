@@ -17,7 +17,7 @@ class Main {
     int l = 0, r = arr.length - 1;
     while (l <= r) {
       int m1 = l + (r - l)/3, m2 = r - (r - l)/3;
-      if (arr[m1] > arr[m2]) {
+      if (arr[m1] > arr[m2]) { // this is for finding a local minimum; use < to find local maximum
         l = m1 + 1;
       }
       else {
