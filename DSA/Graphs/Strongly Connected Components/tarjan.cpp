@@ -17,6 +17,8 @@ void dfs(int i) {
         if (!low[j]) dfs(j);
         low[i] = min(low[i], low[j]);
     }
+    // if low[i] == tin[i], we know that the current node is the start of the current SCC
+    // else if low[i] < tin[i], we know that an earlier node started the current SCC
     if (low[i] == tin[i]) {
         ++cnt;
         while (!st.empty()) {
@@ -25,7 +27,7 @@ void dfs(int i) {
             // alternative is setting to 0, but then we'd need to check when propagating and also have another way of keeping track of vis
             low[c] = 0x3f3f3f3f;
             scc[c] = cnt;
-            if (c == i) break;
+            if (c == i) break; // stop popping once we have reached the start of the current SCC
         }
     }
 }
