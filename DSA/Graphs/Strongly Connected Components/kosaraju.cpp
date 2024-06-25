@@ -18,7 +18,7 @@ Thus, when we process nodes in reverse order of tout on a transposed graph, we c
 *note: tout is basically when the current node was popped from call stack
 */
 
-int n, m, u, v, t = 0, scc[200001], cnt = 0;
+int n, m, u, v, scc[200001], cnt = 0;
 vector<int> adj[200001], adjr[200001];
 vector<int> order;
 bool vis[200001];
