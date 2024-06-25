@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
-Tarjan's algorithm for finding strongly connected components (SCCs) in a directed graph.
+Tarjan's algorithm for finding strongly connected components (SCCs) in a connected directed graph.
 An SCC is a subset of nodes and paths in a graph such that each node has a path to every other node in the subset.
 Somewhat similar to Tarjan's bridge finding algorithm
 */
