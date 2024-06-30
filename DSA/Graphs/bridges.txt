@@ -1,0 +1,4 @@
+Tarjan's bridge finding algorithm finds bridges in an undirected graph in O(N + M) time, 
+where N is the number of vertices and M is the number of edges.
+
+Example: Contest Solutions/Codeforces/1986F.cpp

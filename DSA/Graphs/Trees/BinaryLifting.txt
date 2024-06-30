@@ -1,0 +1,4 @@
+Binary lifting allows us to perform LCA queries in O(logN) time by storing information about the i-th node and its
+2^j-th parent for every node 1 <= i <= N.
+
+Example: Contest Solutions/DMOJ/acc2p3.cpp

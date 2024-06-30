@@ -1,0 +1,3 @@
+Basically a segment tree that allows you to perform updates and queries on unusually large arrays in O(logN).
+
+Example: Contest Solutions/DMOJ/levvesegtree.cpp

@@ -1,0 +1,3 @@
+A persistent segment tree is a segment tree that allows us to retain and perform queries on any previous state of the tree in O(logN) time.
+
+Example: Contest Solutions/DMOJ/dmopc16c3p6.cpp

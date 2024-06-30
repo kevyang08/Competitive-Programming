@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+To perform LCA queries on a rooted tree, we can perform an Euler tour on the tree and keep track of when we visit each node.
+Now, we can turn this problem into a range minimum query problem using some data structure that supports range queries.
+For this example, a sparse table was used.
+*/
+
 int n, q, a, b, t = 0, tin[100001], h[100001], st[18][200000];
 vector<int> adj[100001];
 void dfs(int i, int p) {
