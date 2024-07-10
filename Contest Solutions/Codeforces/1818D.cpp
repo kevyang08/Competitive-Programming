@@ -9,8 +9,8 @@ using namespace std;
     - nvm use bfs so that we can ignore nodes already in the fish when adding extra ones and also keep linear time
 - implementation was slightly worse than expected
 
-bruh nvm the algorithm is still quadratic time (and not even correct for some cases)
-easy fix, but too lazy for now
+bruh nvm the algorithm is still quadratic time
+too lazy to optimize right now
 */
 
 int t, n, m, u, v, in[2001], pa[2001], dist[2001], bruh[2001];
@@ -83,6 +83,7 @@ int main() {
         }
         for (int i = 1; i <= n; i++) {
             if (in[i] > 1 && adj[i].size() > 3) {
+                for (int j = 1; j <= n; j++) pa[j] = dist[j] = thing[j] = 0;
                 thing[i] = true;
                 bfs(i);
                 break;
