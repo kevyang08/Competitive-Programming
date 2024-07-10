@@ -8,6 +8,9 @@ using namespace std;
 - go through all the nodes that are part of a cycle, find one that has adj[i].size() > 3, and find any cycle containing it using another dfs
     - nvm use bfs so that we can ignore nodes already in the fish when adding extra ones and also keep linear time
 - implementation was slightly worse than expected
+
+bruh nvm the algorithm is still quadratic time (and not even correct for some cases)
+easy fix, but too lazy for now
 */
 
 int t, n, m, u, v, in[2001], pa[2001], dist[2001], bruh[2001];
