@@ -1,16 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int t, q, op, sz, v;
-long long x, bit[500001], ans[500001];
+int t, q, op, sz, v, x;
+long long bit[500001], ans[500001];
 vector<int> adj[500001];
-vector<pair<int, long long>> vq[500001];
-void update(int i, long long v) {
+vector<pair<int, int>> vq[500001];
+void update(int i, int v) {
     for (; i > 0; i -= (i & -i)) bit[i] += v;
 }
 long long query(int i) {
     long long res = 0;
-    for (; i <= q; i += (i & -i)) res += bit[i]; // why can't it be sz??
+    for (; i <= sz; i += (i & -i)) res += bit[i];
     return res;
 }
 void dfs(int i) {
@@ -28,8 +28,8 @@ int main() {
     while (t--) {
         sz = 1;
         cin >> q;
-        for (int i = 1; i <= q; i++) adj[i].clear(), vq[i].clear(), bit[i] = 0, ans[i] = 0;
-        for (int i = 1; i <= q; i++) {
+        for (int i = 1; i <= q + 1; i++) adj[i].clear(), vq[i].clear();
+        while (q--) {
             cin >> op >> v;
             if (op == 1) adj[v].push_back(++sz);
             else {
@@ -37,6 +37,7 @@ int main() {
                 vq[v].push_back({sz, x});
             }
         }
+        fill(bit, bit + sz + 1, 0);
         dfs(1);
         for (int i = 1; i <= sz; i++) cout << ans[i] << (i == sz ? "\n" : " ");
     }
