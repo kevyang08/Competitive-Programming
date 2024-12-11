@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
- 
+
 struct TrieNode {
     TrieNode *child[26];
     int cnt = 0;
