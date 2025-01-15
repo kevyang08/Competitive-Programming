@@ -11,7 +11,7 @@ const ll INFL = 0x3f3f3f3f3f3f3f3f;
 /*
 Implementation of the Ford-Fulkerson algorithm that finds the max flow of a network from a source node s 
 to a sink node t in O(Ef), where E is the number of edges in the graph and f is the maximum possible flow. 
-It is assumed that s != t, s and t are connected, and that the capacities are integer values.
+It is assumed that s != t, s and t are connected, and that the capacities are positive integer values.
 
 Note that although this implementation uses an adjacency list, using an adjacency matrix would be simpler
 */
@@ -34,12 +34,12 @@ int dfs(int i, int mn) {
     vis[i] = true;
     for (auto e : adj[i]) {
         if (!(e -> c) || vis[e -> v]) continue;
-        int cur = dfs(e -> v, min(mn, e -> c));
-        if (cur) { // if we have found an augmenting path
-            e -> c -= cur;
-            e -> rev -> c += cur;
+        int dt = dfs(e -> v, min(mn, e -> c));
+        if (dt) { // if we have found an augmenting path
+            e -> c -= dt;
+            e -> rev -> c += dt;
             vis[i] = false;
-            return cur;
+            return dt;
         }
     }
     vis[i] = false;
@@ -50,10 +50,9 @@ int main() {
     cin.sync_with_stdio(0);
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
-    cin >> n >> m; // expecting a graph with n nodes and m edges, with s as the source and t as the sink
+    cin >> n >> m >> s >> t; // expecting a graph with n nodes and m edges, with s as the source and t as the sink
     adj.resize(n + 1);
     vis.resize(n + 1);
-    s = 1, t = n;
     while (m--) {
         cin >> u >> v >> w; // a directed edge from u to v with capacity w
         edge *a = new edge(w, v), *b = new edge(0, u);
@@ -61,12 +60,12 @@ int main() {
         adj[u].push_back(a);
         adj[v].push_back(b);
     }
-    ll mx = 0, cur = INF; // current flow, current residual capacity
-    while (cur) {
-        cur = dfs(s, INF);
-        mx += cur; // increment flow by residual capacity of augmenting path
+    ll flow = 0, dt = INF; // dtrent flow, dtrent residual capacity
+    while (dt) {
+        dt = dfs(s, INF);
+        flow += dt; // increment flow by residual capacity of augmenting path
     }
     // no more augmenting paths, means we have the max flow
-    cout << mx << "\n";
+    cout << flow << "\n";
     return 0;
 }
