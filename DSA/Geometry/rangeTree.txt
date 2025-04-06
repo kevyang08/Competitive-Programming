@@ -1,0 +1,17 @@
+Note: still need to implement
+
+Idea:
+- basically a multidimensional BBST
+- each node is either a pivot or a point
+- to build, divide points by median coordinate, similar to kd-tree
+    - build lower dimension range trees if needed
+- for queries:
+    - find split node v, which is the first node in [l,r]
+    - check left subtree of v against l:
+        - if val >= l, we know all values in right subtree are in range, and we check left subtree
+        - else we know left subtree is not in range, so we check right subtree
+    - check right subtree of v against r in similar way
+- for higher dimensions, we must check lower dimension range trees of each node
+
+- to speed up queries, we can use sorted arrays and fractional cascading so that we only need to binary search on root array
+- to handle duplicate x or y coordinates, we can store the entire point instead and use it as a tiebreaker

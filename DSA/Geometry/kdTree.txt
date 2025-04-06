@@ -1,0 +1,10 @@
+Note: still need to implement
+
+Idea:
+- build tree by recursively splitting region by median point
+    - on even levels (starting at level 0), split horizontally (by vertical line)
+    - on odd levels, split vertically (by horizontal line)
+- at each level, the children nodes represent the two regions that were split from the current region
+    - sorted by non-decreasing order of respectice coordinate, so same as BST
+    - if a region only has one point, then it is simply represented by that point
+- to query regions, we can simply keep checking if the current region intersects with the queried region, no matter the shape
