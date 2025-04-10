@@ -1,0 +1,4 @@
+Similar idea to Edmonds-Karp, but using the cost as the distance instead of the number of edges
+Using Bellman-Ford, the runtime is O(Fmn), where F is the total flow, m is the number of edges, 
+and n is the number of nodes. 
+Using Dijkstra's can reduce this to O(mn + Fmlogn)
