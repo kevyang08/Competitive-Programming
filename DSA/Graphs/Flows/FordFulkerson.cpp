@@ -60,9 +60,8 @@ int main() {
         adj[u].push_back(a);
         adj[v].push_back(b);
     }
-    ll flow = 0, dt = INF; // dtrent flow, dtrent residual capacity
-    while (dt) {
-        dt = dfs(s, INF);
+    ll flow = 0, dt = INF; // current flow, current residual capacity
+    while (dt = dfs(s, INF)) {
         flow += dt; // increment flow by residual capacity of augmenting path
     }
     // no more augmenting paths, means we have the max flow
