@@ -1,4 +1,18 @@
 Suppose that we have a flow network G = (V,E) such that for all e in E, 
 d(e) <= f(e) <= c(e) must be satisfied. That is, the flow function 
 f(e) is bounded by the capacity function c(e) and the demand function 
-d(e). 
+d(e). We want to find a valid flow that satisfies these constraints. 
+
+To solve this problem, we can reduce it to the max flow problem by 
+creating a new network G' = (V',E') and new capacity functions as follows:
+- add a new source s' and a new sink t' to V'
+- for all v in V, add an edge (s',v) to E' such that c'((s',v)) = sum_{u in V}(d((u,v)))
+- for all v in V, add an edge (v,t') to E' such that c'((v,t')) = sum_{w in V}(d((v,w)))
+- for all e in E, add e to E' such that c'(e) = c(e) - d(e)
+- add an edge (t,s) to E' such that c'((t,s)) = INF
+Then, G has a valid flow iff G' has a saturating flow. The proof is left 
+as an exercise for the reader. Since a saturating flow must be a max flow, 
+we can find it using a standard max flow algorithm. 
+
+To find a minimal flow, binary search the lowest value of c'((t,s)) such that 
+the max flow in G' is still a saturating flow. 
