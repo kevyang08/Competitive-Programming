@@ -1,0 +1,4 @@
+Suppose that we have a flow network G = (V,E) such that for all e in E, 
+d(e) <= f(e) <= c(e) must be satisfied. That is, the flow function 
+f(e) is bounded by the capacity function c(e) and the demand function 
+d(e). 
