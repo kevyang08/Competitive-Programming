@@ -67,7 +67,7 @@ int main() {
         adj[v].push_back(u);
         cap[u][v] = w;
     }
-    ll flow = 0, dt = 0; // dtrent flow, dtrent residual capacity
+    ll flow = 0, dt = 0; // current flow, current residual capacity
     while (bfs()) {
         fill(ptr.begin(), ptr.end(), 0);
         while (dt = dfs(s, INF)) {
