@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+ 
 #define fi first
 #define se second
 typedef long long ll;
-
+ 
 const int INF = 0x3f3f3f3f;
 const ll INFL = 0x3f3f3f3f3f3f3f3f;
 
@@ -21,9 +21,15 @@ const ll INFL = 0x3f3f3f3f3f3f3f3f;
 - if not already checked, check all pairs i,j such that a_i^a_j=k (similar to what was done before)
 
 O(nlog^2k)
+
+nvm had to optimize since hash tables suck
+
+prob couldve used a trie instead, but too lazy 
+
+O(nlogk)
 */
 
-int t;
+int t, n, k, a[200001];
 int main() {
     cin.tie(0);
     cin.sync_with_stdio(0);
@@ -31,7 +37,32 @@ int main() {
     // freopen("output.txt", "w", stdout);
     cin >> t;
     while (t--) {
-        
+        int ans = INF;
+        cin >> n >> k;
+        for (int i = 1; i <= n; i++) cin >> a[i];
+        if (!k) {
+            cout << "1\n";
+            continue;
+        }
+        int pk = 0;
+        unordered_map<int, int> mp;
+        for (int j = 29; j >= 0; j--) {
+            if (k & (1 << j)) {
+                pk |= (1 << j);
+                continue;
+            }
+            for (int i = 1; i <= n; i++) {
+                int tmp = (pk & a[i]) | (a[i] & (1 << j));
+                mp[tmp] = i;
+                if (mp.find(tmp ^ (pk | (1 << j))) != mp.end()) ans = min(ans, i - mp[tmp ^ (pk | (1 << j))] + 1);
+            }
+            mp.clear();
+        }
+        for (int i = 1; i <= n; i++) {
+            mp[pk & a[i]] = i;
+            if (mp.find(pk ^ (pk & a[i])) != mp.end()) ans = min(ans, i - mp[pk ^ (pk & a[i])] + 1);
+        }
+        cout << (ans == INF ? -1 : ans) << "\n";
     }
     return 0;
 }
