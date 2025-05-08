@@ -1,0 +1,3 @@
+https://usaco.guide/plat/dp-sos?lang=cpp#sos-dp-as-n-dimensional-prefix-sum
+
+Example: Codeforces/383E.cpp
