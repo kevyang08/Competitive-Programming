@@ -40,7 +40,10 @@ int main() {
         sort(vr.begin(), vr.end(), [&](auto a, auto b) {
             return (y[a] - y[i]) * (x[b] - x[i]) < (y[b] - y[i]) * (x[a] - x[i]);
         });
-        ans = max(ans, max(cl + zr, cr + zl) + max(w[i], 0));
+        ans = max(ans, max(cl + zr, cr + zl) + w[i]);
+        ans = max(ans, max(cl - zl, cr - zr));
+        ans = max(ans, max(cl, cr) + max(w[i], 0));
+        ans = max(ans, max(cl - zl + zr, cr - zr + zl) + max(w[i], 0));
         while (idl < vl.size() || idr < vr.size()) {
             int tmpl = 0, tmpr = 0;
             if (idr == vr.size() || (idl < vl.size() && (y[vl[idl]] - y[i]) * (x[vr[idr]] - x[i]) > (y[vr[idr]] - y[i]) * (x[vl[idl]] - x[i]))) {
@@ -55,7 +58,10 @@ int main() {
                 while (idl < vl.size() && (y[vr[idr]] - y[i]) * (x[vl[idl]] - x[i]) == (y[vl[idl]] - y[i]) * (x[vr[idr]] - x[i])) tmpl += w[vl[idl++]];
                 ++idr;
             }
-            ans = max(ans, max(cl + tmpr, cr + tmpl) + max(w[i], 0));
+            ans = max(ans, max(cl + tmpr, cr + tmpl) + w[i]);
+            ans = max(ans, max(cl - tmpl, cr - tmpr));
+            ans = max(ans, max(cl, cr) + max(w[i], 0));
+            ans = max(ans, max(cl - tmpl + tmpr, cr - tmpr + tmpl) + max(w[i], 0));
             cl += tmpr - tmpl;
             cr += tmpl - tmpr;
         }
