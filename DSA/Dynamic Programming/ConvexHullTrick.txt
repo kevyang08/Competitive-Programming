@@ -1,0 +1,15 @@
+CHT is a dp optimization technique. 
+
+Suppose we have some set of lines S, where each element f is in the form f(x) = mx + b. Then, suppose we want to answer 
+queries in the form max{f(x) : f in S} for some value x. 
+
+For two lines f_i and f_j where m_i < m_j, their intersection point is x' = (b_i - b_j)/(m_j - m_i). It is also clear to 
+see that for x <= x', f_i(x) >= f_j(x), and vice versa. 
+
+As a function, max(f(x)) is concave up, which essentially gives us a convex hull. Note that we can do something similar 
+for min queries. 
+
+If the slopes of the functions are monotonic, we can use a deque for amortized linear time. Otherwise, we would probably 
+need some weird data structure with a lower bound linearithmic time. 
+
+Example: TBA
