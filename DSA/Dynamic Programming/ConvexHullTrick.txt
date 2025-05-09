@@ -12,4 +12,6 @@ for min queries.
 If the slopes of the functions are monotonic, we can use a deque for amortized linear time. Otherwise, we would probably 
 need some weird data structure with a lower bound linearithmic time. 
 
-Example: TBA
+Example: APIO/apio10p1.cpp
+
+Note: implementation can be improved by replacing double in case of precision issues.
