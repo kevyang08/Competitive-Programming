@@ -20,18 +20,16 @@ int main() {
     for (int i = 0; i < n; i++) cin >> x[i] >> y[i] >> w[i];
     for (int i = 0; i < n; i++) {
         vector<int> vl, vr;
-        int cl = 0, cr = 0, idl = 0, idr = 0, zl = 0, zr = 0;
+        int cl = 0, cr = 0, idl = 0, idr = 0;
         for (int j = 0; j < n; j++) {
             if (j == i) continue;
             if (x[j] < x[i] || (x[j] == x[i] && y[j] > y[i])) {
                 vl.push_back(j);
                 cl += w[j];
-                if (x[j] == x[i]) zl += w[j];
             }
             else {
                 vr.push_back(j);
                 cr += w[j];
-                if (x[j] == x[i]) zr += w[j];
             }
         }
         sort(vl.begin(), vl.end(), [&](auto a, auto b) {
@@ -40,10 +38,6 @@ int main() {
         sort(vr.begin(), vr.end(), [&](auto a, auto b) {
             return (y[a] - y[i]) * (x[b] - x[i]) < (y[b] - y[i]) * (x[a] - x[i]);
         });
-        ans = max(ans, max(cl + zr, cr + zl) + w[i]);
-        ans = max(ans, max(cl - zl, cr - zr));
-        ans = max(ans, max(cl, cr) + max(w[i], 0));
-        ans = max(ans, max(cl - zl + zr, cr - zr + zl) + max(w[i], 0));
         while (idl < vl.size() || idr < vr.size()) {
             int tmpl = 0, tmpr = 0;
             if (idr == vr.size() || (idl < vl.size() && (y[vl[idl]] - y[i]) * (x[vr[idr]] - x[i]) > (y[vr[idr]] - y[i]) * (x[vl[idl]] - x[i]))) {
