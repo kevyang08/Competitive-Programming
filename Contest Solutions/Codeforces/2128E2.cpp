@@ -9,8 +9,7 @@ const int INF = 0x3f3f3f3f;
 const ll INFL = 0x3f3f3f3f3f3f3f3f;
 
 int t, n, k, a[300005], aidx[600005], off = 300000;
-multiset<pair<int, int>> st;
-queue<pair<int, int>> ql[300005], qr[300005];
+set<int> st;
 void get_med(int l, int r) {
     priority_queue<int> pql, pqr;
     auto enq = [&](auto x) {
@@ -30,20 +29,26 @@ void get_med(int l, int r) {
         }
     };
     for (int i = l; i <= r; i++) enq(a[i]);
-    ql[pql.top()].push({l, r});
-    if (pql.size() > pqr.size()) qr[pql.top()].push({l, r});
-    else qr[-pqr.top()].push({l, r});
+    auto print_med = [&](int lo, int hi) {
+        if (st.find(pql.top()) != st.end()) {
+            cout << pql.top() << " " << lo << " " << hi << "\n";
+            st.erase(pql.top());
+        }
+        if (pql.size() == pqr.size()) {
+            while (st.upper_bound(pql.top()) != st.end() && *st.upper_bound(pql.top()) <= -pqr.top()) {
+                cout << *st.upper_bound(pql.top()) << " " << lo << " " << hi << "\n";
+                st.erase(st.upper_bound(pql.top()));
+            }
+        }
+    };
+    print_med(l, r);
     for (int i = r + 1; i <= n; i++) {
         enq(a[i]);
-        ql[pql.top()].push({l, i});
-        if (pql.size() > pqr.size()) qr[pql.top()].push({l, i});
-        else qr[-pqr.top()].push({l, i});
+        print_med(l, i);
     }
     for (int i = l - 1; i > 0; i--) {
         enq(a[i]);
-        ql[pql.top()].push({i, n});
-        if (pql.size() > pqr.size()) qr[pql.top()].push({i, n});
-        else qr[-pqr.top()].push({i, n});
+        print_med(i, n);
     }
 }
 pair<int, int> get_mx_idx(int m) {
@@ -92,7 +97,7 @@ void solve() {
         v.push_back(a[i]);
     }
     sort(v.begin(), v.end());
-    int l = v[v.size()/2], r = n, mxl = 1, mxr = n, mnl = 1, mnr = n;
+    int l = v[v.size()/2], r = n, mxl = 1, mxr = n, mnl = 1, mnr = n, lo, hi;
     while (l < r) {
         int m = (l + r + 1)/2;
         auto [rl, rr] = get_mx_idx(m);
@@ -102,7 +107,7 @@ void solve() {
             mxl = rl, mxr = rr;
         }
     }
-    l = 1, r = v[v.size()/2];
+    hi = l, l = 1, r = v[v.size()/2];
     while (l < r) {
         int m = (l + r)/2;
         auto [rl, rr] = get_mn_idx(m);
@@ -112,22 +117,11 @@ void solve() {
             mnl = rl, mnr = rr;
         }
     }
+    lo = r;
+    cout << hi - lo + 1 << "\n";
+    for (int i = lo; i <= hi; i++) st.insert(i);
     get_med(mxl, mxr);
     get_med(mnl, mnr);
-    vector<tuple<int, int, int>> va;
-    for (int i = 1; i <= n; i++) {
-        while (!ql[i].empty()) {
-            st.insert(ql[i].front());
-            ql[i].pop();
-        }
-        if (!st.empty()) va.push_back({i, st.begin() -> fi, st.begin() -> se});
-        while (!qr[i].empty()) {
-            st.extract(qr[i].front());
-            qr[i].pop();
-        }
-    }
-    cout << va.size() << "\n";
-    for (auto &[a, b, c] : va) cout << a << " " << b << " " << c << "\n";
 }
 int main() {
     cin.tie(0);
