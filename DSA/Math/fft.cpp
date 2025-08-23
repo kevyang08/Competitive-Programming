@@ -11,7 +11,7 @@ const ll INFL = 0x3f3f3f3f3f3f3f3f;
 const int M = 1e9 + 7;
 
 /*
-simple implementation of FFT
+faster but weirder implementation of fft, mostly from cp-algorithms.com
 */
 
 typedef complex<double> cd;
@@ -48,5 +48,5 @@ void fft(vector<cd> & a, bool invert) {
         }
     }
 
-    if (invert) for (cd & x : a) x /= n;
+    if (invert) for (cd &x : a) x /= n;
 }
